@@ -21,7 +21,6 @@ export const routes = createBrowserRouter([
     },
     {
         element: <App />,
-        errorElement: <ErrorScreen />,
         children: [
             {
                 path: '/dashboard',

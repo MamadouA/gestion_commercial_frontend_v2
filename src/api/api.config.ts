@@ -22,9 +22,9 @@ api.interceptors.response.use(
       return response;
   }, 
   (error) => {
-    if (error.response.status === 401 && document.location.pathname !== '/login') {
+    if (error.response.status === 401 && document.location.pathname !== '/') {
       useAuthStore.getState().logout();
-      window.location.href = '/login';
+      window.location.href = '/';
     }
     return Promise.reject(error);
 });

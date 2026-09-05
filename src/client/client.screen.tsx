@@ -54,10 +54,10 @@ const ClientScreen = () => {
             renderCell: (item) => `${item.createdAt.split("-")[0]}-C-${item.id}`,
         }),
         createTableColumn<ClientRowItemType>({
-            columnId: "enterpriseName",
-            compare: (a, b) => (a.enterpriseName && b.enterpriseName) ? a.enterpriseName.localeCompare(b.enterpriseName) : 0,
+            columnId: "companyName",
+            compare: (a, b) => (a.companyName && b.companyName) ? a.companyName.localeCompare(b.companyName) : 0,
             renderHeaderCell: () => "Entreprise",
-            renderCell: (item) => item.enterpriseName,
+            renderCell: (item) => item.companyName,
         }),
         createTableColumn<ClientRowItemType>({
             columnId: "contactName",
@@ -109,7 +109,7 @@ const ClientScreen = () => {
     // -
     useEffect(() => {
         if(isSuccess && data) {
-            setClients(data);
+            setClients(data.clients);
         }
     }, [isSuccess, data]);
 
