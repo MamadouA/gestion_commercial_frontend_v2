@@ -9,6 +9,7 @@ import LoadingDataIndicator from "../shared/components/LoadingDataIndicator";
 import FetchErrorIndicator from "../shared/components/FetchErrorIndicator";
 import EmptyDataIndicator from "../shared/components/EmptyDataIndicator";
 import ScreenHeader from "../shared/components/ScreenHeader";
+import ProspectionFilter from "./components/prospection.filter";
 
 const useStyles = makeStyles({
   exportBtn: {
@@ -158,6 +159,7 @@ const ProspectionScreen = () => {
     return (
         <div className="flex flex-col gap-3 h-full pb-10 overflow-scroll">
             <ScreenHeader Icon={<BranchForkHint24Regular className="text-white" />} title="Gestion des prospections" description="voir et gérer l'ensemble des prospections"/>
+            <ProspectionFilter />
             {renderContent()}
         </div>
     );
