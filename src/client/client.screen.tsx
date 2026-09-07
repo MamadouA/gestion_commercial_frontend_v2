@@ -165,6 +165,7 @@ const ClientScreen = () => {
             return <EmptyDataIndicator action={<Button appearance="primary" icon={<AddCircleRegular />} onClick={() => setIsClientFormOpen(true)}>Nouveau client</Button>}/>
         }
     }
+    
     return (
         <div className="flex flex-col gap-3 h-full pb-10 overflow-scroll">
             <ScreenHeader Icon={<ChannelShare24Regular className="text-white" />} title="Gestion des clients" description="voir et gérer l'ensemble de vos clients"/>

@@ -2,7 +2,6 @@ import { create } from "zustand"
 import type { ClientFilterType, ClientRowItemType } from "./client.types"
 
 type State = {
-    isClientFormOpen: boolean
     clients: ClientRowItemType[]
     filters: ClientFilterType
 }

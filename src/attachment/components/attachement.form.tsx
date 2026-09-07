@@ -46,7 +46,7 @@ const AttachementForm = ({ isOpen, onSubmit, onClose, isOptional = false, defaul
                                 rules={{ 
                                     required: { value: !isOptional, message: "champ obligatoire!"}, 
                                     minLength: { value: !isOptional ? 0 : 10, message: "minimum 10 caractères!" },
-                                    maxLength: { value: !isOptional ? 0 : 50, message: "maximum 50 caractères!" }
+                                    maxLength: { value: !isOptional ? 0 : 255, message: "maximum 255 caractères!" }
                                 }} 
                                 render={({ field }) =>  
                                     <Field label="Description" validationState={errors.summary ? "error" : "none"} validationMessage={errors.summary?.message}>

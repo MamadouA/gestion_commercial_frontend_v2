@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogBody, DialogContent, DialogSurface, DialogTitle, Field, makeStyles, Spinner, Textarea, Toast, Toaster, ToastTitle, tokens, useId, useToastController } from "@fluentui/react-components";
+import { Button, Dialog, DialogBody, DialogContent, DialogSurface, DialogTitle, Field, makeStyles, Spinner, Textarea, tokens } from "@fluentui/react-components";
 import { BranchForkHint24Regular, DismissFilled, SaveRegular } from "@fluentui/react-icons";
 import {
   DatePicker,
@@ -10,6 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import type { CreateProspectionRequest } from "../prospection.types";
 import { createProspection } from "../prospection.api";
+import ToastAlerte from "../../shared/components/ToastAlerte";
 
 interface ProspectionFormProps {
     clientId: number
@@ -31,30 +32,22 @@ const ProspectionForm = ({ clientId, isOpen, onClose }: ProspectionFormProps) =>
     const [attachment, setAttachment] = useState<AttachmentType | null>(null);
     const { formState: { errors }, control, reset, handleSubmit } = useForm<{service: string, deadline: string}>();
 
-    const toasterId = useId('toaster');
-    const { dispatchToast} = useToastController(toasterId);
-
-    const notify = (status: "success" | "error") => 
-        dispatchToast(
-             <Toast>
-                <ToastTitle>{status === "error" ? "Une erreur s'est produite. Veuillez réessayer!" : "Prospection enregistrée avec succés!"}</ToastTitle>
-            </Toast>  ,
-            { intent: status }
-        )
-
-    const { isPending, error, data, mutateAsync: createProspectionMutation } = useMutation({
+    const { isPending, isError, isSuccess, error, mutateAsync: createProspectionMutation } = useMutation({
         mutationFn: (data: CreateProspectionRequest) => createProspection(data),
-        onSuccess: () => notify("success"),
-        onError: () => notify("error") 
+        onSuccess: (data) => {
+            reset();
+        },
     });
 
     console.log(error);
 
     return (
         <>
-            <Toaster toasterId={toasterId} position="top-end"/>
-
             <Dialog open={isOpen} modalType="modal">
+                <div>
+                    <ToastAlerte isVisible={isError} status="error" message="Une erreur s'est produite. Veuillez réessayer!" />
+                    <ToastAlerte isVisible={isSuccess} status="success" message="Client enregistré avec succés!" />
+                </div>
                 <DialogSurface className={styles.dialog}>
                     <DialogBody>
                         <DialogTitle className="px-4 py-5  rounded-t-md text-white" style={{backgroundColor: tokens.colorBrandBackground}}>
