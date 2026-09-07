@@ -31,9 +31,9 @@ const ClientForm = ({ isOpen, onClose }: ClientFormProps) => {
     const { isPending, isError, isSuccess, mutateAsync: createClientMutation } = useMutation({
         mutationFn: (data: CreateClientRequest) => createClient(data),
         onSuccess: (data) => {
-            reset();
             queryClient.invalidateQueries({ queryKey: ['clients'] });
             setClients([data, ...clients]);
+            reset();
         }
     });
             
