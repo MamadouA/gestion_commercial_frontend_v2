@@ -126,7 +126,7 @@ const ClientScreen = () => {
             if(clients && clients.length > 0) {
                 return (
                     <div className="border border-slate-300 rounded-md">
-                        <div className="bg-slate-900 p-4 rounded-t-md" style={{ backgroundColor: tokens.colorNeutralBackground2}}>
+                        <div className="bg-slate-900 p-4 rounded-t-md" style={{ backgroundColor: tokens.colorBrandBackground2}}>
                             <h2>
                                 <span className="font-semibold text-lg">Liste des clients</span>
                                 <section className="flex float-right gap-2">

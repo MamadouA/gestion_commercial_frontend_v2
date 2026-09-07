@@ -58,13 +58,13 @@ const ProspectionScreen = () => {
             createTableColumn<ProspectionRowItemType>({
                 columnId: "Echéance",
                 compare: (a, b) => a.deadline.localeCompare(b.deadline),
-                renderHeaderCell: () => "Contact",
+                renderHeaderCell: () => "Echéance",
                 renderCell: (item) => <TableCellLayout truncate>{getLocalDateFormat(item.deadline)}</TableCellLayout>
             }),
             createTableColumn<ProspectionRowItemType>({
                 columnId: "client",
                 compare: (a, b) => a.client.type === "ENTREPRISE" ? a.client.companyName.localeCompare(b.client.companyName) : a.client.contactName.localeCompare(b.client.contactName),
-                renderHeaderCell: () => "Email",
+                renderHeaderCell: () => "Client",
                 renderCell: (item) => <TableCellLayout truncate>{item.client.type === "ENTREPRISE" ? item.client.companyName : item.client.contactName}</TableCellLayout>,
             }),
             createTableColumn<ProspectionRowItemType>({
@@ -82,14 +82,8 @@ const ProspectionScreen = () => {
             createTableColumn({
                 columnId: "actions",
                 renderCell: (item) => (
-                    <TableCellActions>
-                        <Tooltip relationship="label" content="Nouvelle prospection">
-                            <Button icon={<BranchForkHint20Regular />} appearance="subtle" onClick={() => {
-                               
-                            }} />
-                        </Tooltip>
-                        
-                        <Tooltip relationship="label" content="Détails du client">   
+                    <TableCellActions>                        
+                        <Tooltip relationship="label" content="Détails de la prospection">   
                             <Button icon={<EyeCircle20Regular />} appearance="subtle" />
                         </Tooltip>
                     </TableCellActions> 
@@ -119,12 +113,11 @@ const ProspectionScreen = () => {
             if(prospections && prospections.length > 0) {
                 return (
                     <div className="border border-slate-300 rounded-md">
-                        <div className="bg-slate-900 p-4 rounded-t-md" style={{ backgroundColor: tokens.colorNeutralBackground2}}>
+                        <div className="bg-slate-900 p-4 rounded-t-md" style={{ backgroundColor: tokens.colorBrandBackground2 }}>
                             <h2>
                                 <span className="font-semibold text-lg">Liste des prospections</span>
                                 <section className="flex float-right gap-2">
                                     <Button className={styles.exportBtn} icon={<AddCircleRegular />}>Export CSV</Button>
-                                    <Button appearance="primary" icon={<AddCircleRegular />} onClick={() => setIsProspectionFormOpen(true)}>Nouveau</Button>
                                 </section>
                             </h2>
                         </div>
