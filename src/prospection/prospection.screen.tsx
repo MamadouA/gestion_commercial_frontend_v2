@@ -10,6 +10,9 @@ import FetchErrorIndicator from "../shared/components/FetchErrorIndicator";
 import EmptyDataIndicator from "../shared/components/EmptyDataIndicator";
 import ScreenHeader from "../shared/components/ScreenHeader";
 import ProspectionFilter from "./components/prospection.filter";
+import ProspectionStats from "./components/prospection.stats";
+import { PROSPECTIONS_STATUSES } from "./prospection.constants";
+import { getLocalDateFormat } from "../utils/getLocalDateFormat";
 
 const useStyles = makeStyles({
   exportBtn: {
@@ -56,7 +59,7 @@ const ProspectionScreen = () => {
                 columnId: "Echéance",
                 compare: (a, b) => a.deadline.localeCompare(b.deadline),
                 renderHeaderCell: () => "Contact",
-                renderCell: (item) => <TableCellLayout truncate>{item.deadline}</TableCellLayout>
+                renderCell: (item) => <TableCellLayout truncate>{getLocalDateFormat(item.deadline)}</TableCellLayout>
             }),
             createTableColumn<ProspectionRowItemType>({
                 columnId: "client",
@@ -74,7 +77,7 @@ const ProspectionScreen = () => {
                 columnId: "status",
                 compare: (a, b) => a.status.localeCompare(b.status),
                 renderHeaderCell: () => "Statut",
-                renderCell: (item) => item.status,
+                renderCell: (item) => PROSPECTIONS_STATUSES[item.status],
             }),
             createTableColumn({
                 columnId: "actions",
@@ -159,6 +162,7 @@ const ProspectionScreen = () => {
     return (
         <div className="flex flex-col gap-3 h-full pb-10 overflow-scroll">
             <ScreenHeader Icon={<BranchForkHint24Regular className="text-white" />} title="Gestion des prospections" description="voir et gérer l'ensemble des prospections"/>
+            <ProspectionStats />
             <ProspectionFilter />
             {renderContent()}
         </div>

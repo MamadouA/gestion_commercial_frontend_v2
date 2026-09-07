@@ -1,2 +1,6 @@
 
-export const PROSPECTIONS_STATUSES = ["PENDING", "WON", "LOST"] as const;
+export const PROSPECTIONS_STATUSES = {
+    OPENED: "En attente",
+    WON: "Gagnée",
+    LOST: "Perdue"
+}

@@ -8,6 +8,8 @@ export interface CreateProspectionRequest {
     attachment?: AttachmentType | null
 }
 
+export type ProspectionStatusType = keyof typeof PROSPECTIONS_STATUSES;
+
 // -
 export interface ProspectionRowItemType {
     id: number
@@ -23,6 +25,6 @@ export interface ProspectionRowItemType {
         id: number
         fullname: string
     }
-    status: typeof PROSPECTIONS_STATUSES[number]
+    status: ProspectionStatusType
     createdAt: string
 }
