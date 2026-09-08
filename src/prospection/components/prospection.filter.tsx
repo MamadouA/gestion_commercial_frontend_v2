@@ -1,4 +1,4 @@
-import { Button, Field, Input, makeStyles, Select, tokens } from "@fluentui/react-components";
+import { Button, Field, Input, makeStyles, Option, Select, tokens } from "@fluentui/react-components";
 import { DatePicker } from "@fluentui/react-datepicker-compat";
 import { ArrowSyncRegular, FilterRegular } from "@fluentui/react-icons";
 import ClientAutocomplete from "../../client/components/client.autocomplete";
@@ -51,7 +51,8 @@ const ProspectionFilter = () => {
 
                  <Field label="Statut">
                     <Select className={styles.select} size='large'> 
-                        {Object.entries(PROSPECTIONS_STATUSES).map(([key, value]) => (<option key={key} value={key}>{value}</option>))}
+                        <Option value="">Tout</Option>
+                        {Object.entries(PROSPECTIONS_STATUSES).map(([key, value]) => (<Option key={key} value={key}>{value}</Option>))}
                     </Select>
                  </Field>
 

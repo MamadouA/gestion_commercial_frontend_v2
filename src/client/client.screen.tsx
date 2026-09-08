@@ -33,8 +33,8 @@ const useStyles = makeStyles({
 
 
 const ClientScreen = () => {
-    const styles = useStyles();
-    const { clients, setClients } = useClientStore();
+    const styles = useStyles();``
+    const [clients, setClients] = useState<ClientRowItemType[]>([]);
     const [isClientFormOpen, setIsClientFormOpen] = useState(false);
     const [selectedClientId, setSelectedClientId] = useState<number | null>(null);
     const [isProspectionFormOpen, setIsProspectionFormOpen] = useState(false);
