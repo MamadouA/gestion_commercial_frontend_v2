@@ -28,3 +28,11 @@ export interface ProspectionRowItemType {
     status: ProspectionStatusType
     createdAt: string
 }
+
+// -
+export interface ProspectionFilterType {
+    deadline: string
+    companyName: string
+    contactName: string
+    status: ProspectionStatusType | "Tout"
+}

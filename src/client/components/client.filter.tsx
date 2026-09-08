@@ -27,7 +27,7 @@ const ClientFilter = () => {
                 Filtres
             </div>
 
-            <div className='flex flex-wrap gap-4 items-end'>
+            <form className='flex flex-wrap gap-4 items-end'>
                 <Field label="Type">
                     <Select className={styles.select} size='large'>
                         <option value="">Tous</option>
@@ -47,7 +47,7 @@ const ClientFilter = () => {
                 </Field>
 
                 <Button appearance="secondary" icon={<ArrowSyncRegular />} size='large'>Réinitialiser</Button>
-            </div>
+            </form>
         </div>
     );
 }

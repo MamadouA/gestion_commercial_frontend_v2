@@ -14,7 +14,7 @@ type Action = {
 export const useClientStore = create<State & Action>()((set) => ({
     isClientFormOpen: false,
     clients: [],
-    filters: { type: "Tous", enterpriseName: "", contactName: "", email: "" },
+    filters: { type: "Tout", enterpriseName: "", contactName: ""},
     setFilters: (filters: ClientFilterType) => set({ filters }),
     setClients: (clients: ClientRowItemType[]) => set({ clients }),
 }))

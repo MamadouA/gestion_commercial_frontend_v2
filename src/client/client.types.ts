@@ -1,9 +1,8 @@
 
 export interface ClientFilterType {
-    type: "Tous" | "Particulier" | "Entreprise"
+    type: "Tout" | "Particulier" | "Entreprise"
     enterpriseName: string
     contactName: string
-    email: string
 }
 
 export interface ClientRowItemType {
