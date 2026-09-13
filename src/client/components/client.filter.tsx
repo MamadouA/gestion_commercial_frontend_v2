@@ -22,14 +22,14 @@ const ClientFilter = () => {
     
     return (
         <div className='flex flex-col gap-3 bg-gray-50 px-5 py-8 border border-slate-200 rounded-md' style={{ backgroundColor: tokens.colorNeutralBackground1 }}>
-            <div>
+            <div className="flex gap-2 items-center">
                 <FilterRegular /> 
                 Filtres
             </div>
 
             <form className='flex flex-wrap gap-4 items-end'>
                 <Field label="Type">
-                    <Select className={styles.select} size='large'>
+                    <Select className={styles.select} >
                         <option value="">Tous</option>
                         <option value="PARTICULIER">Particulier</option>
                         <option value="ENTREPRISE">Entreprise</option>
@@ -37,16 +37,16 @@ const ClientFilter = () => {
                 </Field>
                 
                 <Field label="Entreprise">
-                    <Input placeholder="nom de l'entreprise" className={styles.input} size='large'/>
+                    <Input placeholder="nom de l'entreprise" />
                 </Field>
                 <Field label="Contact">
-                    <Input placeholder="nom du contact" className={styles.input} size='large'/>
+                    <Input placeholder="nom du contact" />
                 </Field>
                 <Field label="Email">
-                    <Input placeholder="email de l'entreprise" className={styles.input} size='large'/>
+                    <Input placeholder="email de l'entreprise" />
                 </Field>
 
-                <Button appearance="secondary" icon={<ArrowSyncRegular />} size='large'>Réinitialiser</Button>
+                <Button appearance="secondary" icon={<ArrowSyncRegular />} >Réinitialiser</Button>
             </form>
         </div>
     );

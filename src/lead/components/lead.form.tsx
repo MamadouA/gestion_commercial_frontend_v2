@@ -1,18 +1,17 @@
 import { Button, Dialog, DialogBody, DialogContent, DialogSurface, DialogTitle, Field, makeStyles, Spinner, Textarea, tokens } from "@fluentui/react-components";
-import { BranchForkHint24Regular, DismissFilled, SaveRegular } from "@fluentui/react-icons";
-import {
-  DatePicker,
-} from "@fluentui/react-datepicker-compat";
+import ToastAlerte from "../../shared/components/ToastAlerte";
 import { useState } from "react";
 import type { AttachmentType } from "../../attachment/attachment.types";
-import AttachementForm from "../../attachment/components/attachement.form";
-import { Controller, useForm } from "react-hook-form";
+import type { CreateLeadRequest } from "../lead.types";
+import { createLead } from "../lead.api";
 import { useMutation } from "@tanstack/react-query";
-import type { CreateProspectionRequest } from "../prospection.types";
-import { createProspection } from "../prospection.api";
-import ToastAlerte from "../../shared/components/ToastAlerte";
+import { Controller, useForm } from "react-hook-form";
+import { BranchForkHint24Regular, DismissFilled, SaveRegular } from "@fluentui/react-icons";
+import { DatePicker } from "@fluentui/react-datepicker-compat";
+import AttachementForm from "../../attachment/components/attachement.form";
 
-interface ProspectionFormProps {
+
+interface LeadFormProps {
     clientId: number
     isOpen: boolean
     onClose: VoidFunction
@@ -26,36 +25,36 @@ const useStyles = makeStyles({
     }
 })
 
-const ProspectionForm = ({ clientId, isOpen, onClose }: ProspectionFormProps) => {
+const LeadForm = ({ clientId, isOpen, onClose }: LeadFormProps) => {
     const styles = useStyles();
     const [isAttachementFormOpen, setIsAttachementFormOpen] = useState(false);
     const [attachment, setAttachment] = useState<AttachmentType | null>(null);
     const { formState: { errors }, control, reset, handleSubmit } = useForm<{service: string, deadline: string}>();
 
-    const { isPending, isError, isSuccess, error, mutateAsync: createProspectionMutation } = useMutation({
-        mutationFn: (data: CreateProspectionRequest) => createProspection(data),
+    const { isPending, isError, isSuccess, mutateAsync: createLeadMutation } = useMutation({
+        mutationFn: (data: CreateLeadRequest) => createLead(data),
         onSuccess: (data) => {
             reset();
         },
     });
 
     return (
-        <>
+                <>
             <Dialog open={isOpen} modalType="modal">
                 <div>
                     <ToastAlerte isVisible={isError} status="error" message="Une erreur s'est produite. Veuillez réessayer!" />
-                    <ToastAlerte isVisible={isSuccess} status="success" message="Client enregistré avec succés!" />
+                    <ToastAlerte isVisible={isSuccess} status="success" message="Lead enregistré avec succés!" />
                 </div>
                 <DialogSurface className={styles.dialog}>
                     <DialogBody>
                         <DialogTitle className="px-4 py-5  rounded-t-md text-white" style={{backgroundColor: tokens.colorBrandBackground}}>
                             <BranchForkHint24Regular />
-                            Formulaire prospection
+                            Formulaire Lead
                             <Button className="absolute top-2 right-2 bg-gray-200!" shape="circular" icon={<DismissFilled />} appearance="transparent" onClick={onClose} />
                         </DialogTitle>
                         
                         <DialogContent>
-                            <form className="p-5 flex flex-col gap-4" onSubmit={handleSubmit((data) => createProspectionMutation({...data, clientId, attachment}))}>
+                            <form className="p-5 flex flex-col gap-4" onSubmit={handleSubmit((data) => createLeadMutation({...data, clientId, attachment}))}>
                                 <Controller name="service" control={control} 
                                     rules={{ 
                                         required: "champ obligatoire!", 
@@ -130,4 +129,4 @@ const ProspectionForm = ({ clientId, isOpen, onClose }: ProspectionFormProps) =>
     );
 }
 
-export default ProspectionForm;
+export default LeadForm;

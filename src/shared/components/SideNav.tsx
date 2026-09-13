@@ -48,12 +48,10 @@ const SideNav = () => {
           <NavItem icon={<ChannelShare24Regular />} style={{ backgroundColor: tokens.colorNeutralBackground1}} value="clients" onClick={() => navigateTo('clients')}>
             Clients
           </NavItem>
-          <NavItem icon={<BranchForkHint24Regular />} style={{ backgroundColor: tokens.colorNeutralBackground1}} value="prospections" onClick={() => navigateTo('prospections')}>
-            Prospections
+          <NavItem icon={<BranchForkHint24Regular />} style={{ backgroundColor: tokens.colorNeutralBackground1}} value="leads" onClick={() => navigateTo('leads')}>
+            Leads
           </NavItem>
-          <NavItem icon={<Handshake24Regular />} style={{ backgroundColor: tokens.colorNeutralBackground1}} value="offers" onClick={() => navigateTo('offers')}>
-            Offres
-          </NavItem>
+        
           <NavItem icon={<CoinMultiple20Regular />} style={{ backgroundColor: tokens.colorNeutralBackground1}} value="projects" onClick={() => navigateTo('projects')}>
             Projets
           </NavItem>

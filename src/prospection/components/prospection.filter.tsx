@@ -34,7 +34,6 @@ const ProspectionFilter = () => {
     const [selectedClientId, setSelectedClientId] = useState<number | null>(null);
     const [clientAutocompleteQuery, setClientAutocompleteQuery] = useState('');
 
-    console.log("selected client: ", selectedClientId);
     return (
         <div className='flex flex-col gap-3 bg-gray-50 px-5 py-8 border border-slate-200 rounded-md' style={{ backgroundColor: tokens.colorNeutralBackground1 }}>
             <div>

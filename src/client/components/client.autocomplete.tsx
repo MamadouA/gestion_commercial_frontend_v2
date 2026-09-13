@@ -53,7 +53,6 @@ const ClientAutocomplete = ({ query, onQueryChange, onSelect }: ClientAutocomple
     return (
         <Field label="Client">
             <Combobox   
-                className={styles.input}
                 onOptionSelect={onOptionSelect}
                 placeholder="Sélectionner un client"
                 onChange={(ev) => {
@@ -61,7 +60,6 @@ const ClientAutocomplete = ({ query, onQueryChange, onSelect }: ClientAutocomple
                     onSelect(null);
                 }}
                 value={query}
-                size='large'
             >
                 {children}
             </Combobox>

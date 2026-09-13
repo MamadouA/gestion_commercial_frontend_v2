@@ -8,11 +8,10 @@ import SubscriptionScreen from './subscription/subscription.screen'
 import UserScreen from './user/user.screen'
 import RoleScreen from './role/role.screen'
 import ClientScreen from './client/client.screen'
-import ProspectionScreen from './prospection/prospection.screen'
-import OfferScreen from './offer/offer.screen'
 import ProjectScreen from './project/project.screen'
 import NotificationScreen from './notification/notification.screen'
 import ErrorScreen from './shared/ErrorScreen'
+import LeadScreen from './lead/lead.screen'
 
 export const routes = createBrowserRouter([
     {
@@ -47,12 +46,8 @@ export const routes = createBrowserRouter([
                 element: <ClientScreen />
             },
             {
-                path: 'prospections',
-                element: <ProspectionScreen />
-            },
-            {
-                path: 'offers',
-                element: <OfferScreen />
+                path: 'leads',
+                element: <LeadScreen />
             },
             {
                 path: 'projects',
