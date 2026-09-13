@@ -9,6 +9,7 @@ import { ArrowSyncRegular, FilterRegular } from "@fluentui/react-icons";
 import ClientAutocomplete from "../../client/components/client.autocomplete";
 import { useState } from "react";
 import { DatePicker } from "@fluentui/react-datepicker-compat";
+import { LEAD_STATUSES } from "../lead.constants";
 
 const useStyles = makeStyles({
   input: {
@@ -45,7 +46,7 @@ const LeadFilter = () => {
       </div>
 
       <form className="flex flex-wrap gap-4 items-end">
-        <Field label="Type">
+        <Field label="Type de lead">
           <Select className={styles.select}  value="">
             <option value="">Tout</option>
             <option value="PROSPECTION">Prospection</option>
@@ -69,6 +70,9 @@ const LeadFilter = () => {
         <Field label="Statut">
           <Select className={styles.select} >
             <option value="">Tout</option>
+            {
+              Object.entries(LEAD_STATUSES).map(([key, value]) => (<option key={key} value={key}>{value}</option>))
+            }
           </Select>
         </Field>
 

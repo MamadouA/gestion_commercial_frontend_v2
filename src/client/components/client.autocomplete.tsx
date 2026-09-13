@@ -51,7 +51,7 @@ const ClientAutocomplete = ({ query, onQueryChange, onSelect }: ClientAutocomple
     }, [isSuccess, clients]);
 
     return (
-        <Field label="Client">
+        <Field label="Sélectionner un client">
             <Combobox   
                 onOptionSelect={onOptionSelect}
                 placeholder="Sélectionner un client"
